@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=41", "wheel", "setuptools-git-versioning"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name="ccx2paraview"
+dynamic = [ "version" ]
+dependencies = [ "numpy" ]
+requires-python = ">=3.9"
+authors = [
+    { name = "Ihor Mirzov",  email="imirzov@gmail.com"}
+]
+maintainers = [
+    { name = "Ihor Mirzov",  email="imirzov@gmail.com"}
+]
+description="CalculiX to Paraview converter (frd to vtk/vtu). Makes it possible to view and postprocess CalculiX analysis results in Paraview. Generates Mises and Principal components for stress and strain tensors."
+readme = "README.md"
+license={ text = "GPL-3.0" }
+keywords = ["converter", "vtk", "vtu", "paraview", "calculix", "frd"]
+classifiers=[
+"Development Status :: 4 - Beta",
+"License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+"Programming Language :: Python :: 3 :: Only",
+"Programming Language :: Python :: 3.9",
+"Topic :: Scientific/Engineering",
+]
+
+[project.optional-dependencies]
+VTK = [ "vtk" ]
+
+[project.urls]
+Homepage = "https://github.com/calculix/ccx2paraview"
+Documentation = "https://github.com/calculix/ccx2paraview"
+Repository = "https://github.com/calculix/ccx2paraview"
+"Bug Tracker" = "https://github.com/calculix/ccx2paraview/issues"
+
+[project.scripts]
+ccx2paraview = "ccx2paraview.cli:main"
+ccxToVTK = "ccx2paraview.cli:ccx_to_vtk"
+ccxToVTU = "ccx2paraview.cli:ccx_to_vtu"
+
+[tool.setuptools-git-versioning]
+enabled = true
+
+[tool.setuptools]
+include-package-data = true
+packages = ["ccx2paraview"]
